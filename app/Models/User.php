@@ -2,18 +2,17 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
-    /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
 
     /**
-     * The attributes that are mass assignable.
+     * Atribut yang bisa diisi massal.
      *
      * @var list<string>
      */
@@ -24,7 +23,7 @@ class User extends Authenticatable
     ];
 
     /**
-     * The attributes that should be hidden for serialization.
+     * Atribut yang harus disembunyikan saat serialisasi.
      *
      * @var list<string>
      */
@@ -34,7 +33,7 @@ class User extends Authenticatable
     ];
 
     /**
-     * Get the attributes that should be cast.
+     * Atribut yang harus dicasting.
      *
      * @return array<string, string>
      */
@@ -42,7 +41,7 @@ class User extends Authenticatable
     {
         return [
             'email_verified_at' => 'datetime',
-            'password' => 'hashed',
+            'password' => 'hashed', // otomatis hash kalau pakai ->update() atau ->create()
         ];
     }
 }
