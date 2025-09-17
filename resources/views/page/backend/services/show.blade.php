@@ -1,0 +1,47 @@
+@extends('layouts.backend.app')
+
+@section('content')
+<!-- Header Halaman -->
+<div class="bg-secondary text-center rounded-3 p-4 mb-4 shadow-sm">
+    <h1 class="text-white fw-bold mb-0">Detail Service</h1>
+</div>
+
+<div class="row justify-content-start">
+    <!-- Kolom Detail Lebih Besar -->
+    <div class="col-md-12">
+        <div class="bg-secondary rounded-3 shadow-sm p-5 text-white">
+
+            <!-- Judul -->
+            <div class="text-center mb-5">
+                <h2 class="fw-bold fs-3">{{ $service->title }}</h2>
+            </div>
+
+            <!-- Description -->
+            <div class="mb-4">
+                <h5 class="fw-bold">Description</h5>
+                <div class="bg-dark rounded p-3">
+                    <p class="mb-0 text-white fs-6">{{ $service->description ?? '-' }}</p>
+                </div>
+            </div>
+
+            <!-- Status Active -->
+            <div class="mb-3">
+                <h5 class="fw-bold">Status</h5>
+                <div class="bg-dark rounded p-3">
+                    <p class="mb-0 text-white fs-6">
+                        {{ $service->is_active ? 'Active' : 'Inactive' }}
+                    </p>
+                </div>
+            </div>
+
+            <!-- Tombol Kembali -->
+            <div class="text-center mt-5">
+                <a href="{{ route('services.index') }}" class="btn btn-danger px-5 py-2 fw-bold">
+                    Kembali
+                </a>
+            </div>
+
+        </div>
+    </div>
+</div>
+@endsection

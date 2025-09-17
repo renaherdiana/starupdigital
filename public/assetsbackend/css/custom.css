@@ -1,0 +1,222 @@
+/* ============================= */
+/* NeoWeb Figma-style Dashboard CSS */
+/* ============================= */
+
+/* ----------------------------- */
+/* Body full background */
+/* ----------------------------- */
+body, html {
+    min-height: 100vh !important;
+    background: linear-gradient(135deg, #1E2028 0%, #2A2E3B 100%) !important;
+    color: #6C7293 !important;
+    margin: 0 !important;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Wrapper utama harus transparan */
+.container-xxl.position-relative {
+    background: transparent !important;
+}
+
+/* ----------------------------- */
+/* Sidebar */
+/* ----------------------------- */
+.sidebar {
+    width: 250px;
+    min-height: 100vh;
+    background-color: rgba(25,28,36,0.95);
+    backdrop-filter: blur(10px);
+    color: #fff;
+    flex-shrink: 0;
+    overflow-y: auto;
+}
+
+.sidebar .navbar {
+    flex-direction: column;
+    padding: 20px;
+}
+
+.sidebar .navbar .navbar-brand {
+    color: #fff;
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.sidebar .navbar .nav-link {
+    color: #6C7293;
+    padding: 10px 15px;
+    border-radius: 0 30px 30px 0;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.sidebar .navbar .nav-link i {
+    margin-right: 10px;
+    width: 25px;
+    text-align: center;
+}
+
+.sidebar .navbar .nav-link:hover,
+.sidebar .navbar .nav-link.active {
+    color: #EB1616;
+    background-color: rgba(0,0,0,0.2);
+}
+
+/* Dropdown sidebar (optional) */
+.sidebar .navbar .dropdown-toggle::after {
+    margin-left: auto;
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    content: "\f107";
+    transition: 0.3s;
+}
+
+.sidebar .navbar .dropdown-toggle[aria-expanded="true"]::after {
+    transform: rotate(-180deg);
+}
+
+.sidebar .navbar .dropdown-item {
+    padding-left: 25px;
+    color: #6C7293;
+}
+
+.sidebar .navbar .dropdown-item:hover,
+.sidebar .navbar .dropdown-item.active {
+    background-color: rgba(0,0,0,0.2);
+}
+
+/* ----------------------------- */
+/* Content area */
+/* ----------------------------- */
+.content {
+    flex-grow: 1;
+    background-color: rgba(30,32,40,0.95);
+    backdrop-filter: blur(8px);
+    min-height: 100vh;
+    padding: 20px 30px;
+}
+
+/* ----------------------------- */
+/* Navbar top */
+/* ----------------------------- */
+.content .navbar {
+    background: transparent;
+    padding: 10px 0;
+}
+
+.content .navbar .btn {
+    border-radius: 50px;
+    width: 40px;
+    height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.content .navbar .nav-link {
+    color: #6C7293;
+    margin-left: 15px;
+    transition: 0.3s;
+}
+
+.content .navbar .nav-link:hover,
+.content .navbar .nav-link.active {
+    color: #EB1616;
+}
+
+.content .navbar .dropdown-item:hover,
+.content .navbar .dropdown-item.active {
+    background-color: rgba(0,0,0,0.2);
+}
+
+/* ----------------------------- */
+/* Cards */
+/* ----------------------------- */
+.card {
+    background-color: rgba(40,42,50,0.9);
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+}
+
+/* ----------------------------- */
+/* Buttons */
+/* ----------------------------- */
+.btn-primary {
+    background-color: #EB1616 !important;
+    border: none !important;
+    color: #fff !important;
+    transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #c21414 !important;
+}
+
+/* Small circle buttons */
+.btn-circle {
+    width: 38px;
+    height: 38px;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+/* ----------------------------- */
+/* Footer */
+/* ----------------------------- */
+footer {
+    text-align: center;
+    color: #6C7293;
+    margin-top: 30px;
+}
+
+/********** Sidebar Toggle **********/
+.sidebar {
+    transition: margin-left 0.3s ease;
+}
+
+.content {
+    transition: margin-left 0.3s ease, width 0.3s ease;
+}
+
+/* Desktop >= 992px */
+@media (min-width: 992px) {
+    .sidebar.open {
+        margin-left: -250px; /* sembunyikan sidebar */
+    }
+
+    .content.open {
+        margin-left: 0;
+        width: 100%;
+    }
+}
+
+/* Mobile < 992px */
+@media (max-width: 991.98px) {
+    .sidebar {
+        margin-left: -250px; /* default disembunyikan */
+    }
+
+    .sidebar.open {
+        margin-left: 0; /* tampilkan */
+    }
+
+    .content {
+        margin-left: 0;
+        width: 100%;
+    }
+}
