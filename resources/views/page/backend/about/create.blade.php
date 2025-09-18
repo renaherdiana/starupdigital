@@ -1,5 +1,4 @@
 @extends('layouts.backend.app')
-
 @section('content')
 <!-- Header Halaman -->
 <div class="bg-secondary text-center rounded-3 p-4 mb-4 shadow-sm">

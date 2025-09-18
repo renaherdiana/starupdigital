@@ -1,17 +1,20 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Backend\DashboardBackendController;
-use App\Http\Controllers\Backend\AboutBackendController;
-use App\Http\Controllers\Backend\ServicesBackendController;
-use App\Http\Controllers\Backend\GalleryBackendController;
-use App\Http\Controllers\Backend\TestimonialBackendController;
-use App\Http\Controllers\Backend\SejarahBackendController;
-use App\Http\Controllers\Backend\TenagaKerjaBackendController;
-use App\Http\Controllers\Backend\PartnersBackendController;
-use App\Http\Controllers\Backend\ContactBackendController;
-use App\Http\Controllers\Backend\SocialMediaBackendController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Backend\AboutBackendController;
+use App\Http\Controllers\Frontend\HomeFrontendController;
+use App\Http\Controllers\Backend\ContactBackendController;
+use App\Http\Controllers\Backend\GalleryBackendController;
+use App\Http\Controllers\Backend\SejarahBackendController;
+use App\Http\Controllers\Backend\PartnersBackendController;
+use App\Http\Controllers\Backend\ServicesBackendController;
+use App\Http\Controllers\Backend\DashboardBackendController;
+use App\Http\Controllers\Frontend\SejarahFrontendController;
+use App\Http\Controllers\Backend\SocialMediaBackendController;
+use App\Http\Controllers\Backend\TenagaKerjaBackendController;
+use App\Http\Controllers\Backend\TestimonialBackendController;
+use App\Http\Controllers\Frontend\TenagakerjaFrontendController;
 
 // Route root selalu ke login
 Route::get('/', function () {
@@ -126,3 +129,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [DashboardBackendController::class, 'index'])->name('dashboard.index');
 });
 Route::post('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
+
+// Route Frontend
+Route::get('/',[HomeFrontendController::class, 'index']);
+
+Route::get('/sejarah',[SejarahFrontendController::class, 'index']);
+
+Route::get('/tenagakerja',[TenagakerjaFrontendController::class, 'index']);
