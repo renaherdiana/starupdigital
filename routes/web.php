@@ -131,7 +131,7 @@ Route::middleware('auth')->group(function () {
 Route::post('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
 
 // Route Frontend
-Route::get('/',[HomeFrontendController::class, 'index']);
+Route::get('/index',[HomeFrontendController::class, 'index']);
 
 Route::get('/sejarah',[SejarahFrontendController::class, 'index']);
 
