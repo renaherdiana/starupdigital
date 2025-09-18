@@ -48,6 +48,10 @@
             <a href="{{ url('/contact') }}" class="nav-item nav-link {{ request()->segment(1) == 'contact' ? 'active' : '' }}">
                 <i class="fas fa-envelope me-2"></i>Contact
             </a>
+            <a href="{{ route('messages.index') }}" class="nav-item nav-link {{ request()->segment(1) == 'messages' ? 'active' : '' }}">
+                <i class="fas fa-envelope-open-text me-2"></i>Message
+            </a>
+
             <a href="{{ route('socialmedia.index') }}" class="nav-item nav-link {{ request()->segment(1) == 'socialmedia' ? 'active' : '' }}">
                 <i class="fas fa-share-alt me-2"></i>Social Media
             </a>

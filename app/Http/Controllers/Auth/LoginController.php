@@ -11,7 +11,7 @@ class LoginController extends Controller
     // Tampilkan form login
     public function showLoginForm()
     {
-        return view('page.auth.login'); // sesuaikan dengan folder view kamu
+        return view('page.auth.login'); // sesuaikan folder view kamu
     }
 
     // Proses login
@@ -24,9 +24,14 @@ class LoginController extends Controller
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->route('dashboard.index'); // langsung ke dashboard backend
-        }
 
+            // cek role user
+            if (Auth::user()->role === 'admin') {
+                return redirect()->route('dashboard.index'); // ke backend
+            } else {
+                return redirect()->route('frontend.home'); // ke frontend
+            }
+        }
 
         return back()->withErrors([
             'email' => 'Email atau password salah.',
@@ -41,7 +46,6 @@ class LoginController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect('/'); // balik ke login
+        return redirect()->route('login'); // kembali ke login
     }
-    
 }

@@ -10,7 +10,7 @@
     <!-- Spinner End -->
 
     <!-- Home Start -->
-    <div class="container-fluid p-0 hero-header bg-light mb-5">
+<div class="container-fluid p-0 hero-header bg-light mb-5">
         <div class="container p-0">
             <div class="row g-0 align-items-center">
                 <div class="col-lg-6 hero-header-text py-5">
@@ -50,12 +50,12 @@
                 </div>
             </div>
         </div>
-    </div>
+</div>
     <!-- Home End -->
 
 
     <!-- About Start -->
-    <div class="container-fluid py-5">
+<div class="container-fluid py-5">
         <div class="container">
             <div class="row g-5">
                 <div class="col-lg-6 wow fadeIn" data-wow-delay="0.2s">
@@ -95,12 +95,12 @@
                 </div>
             </div>
         </div>
-    </div>
+</div>
     <!-- About End -->
 
 
     <!-- Services Start -->
-    <div class="container-fluid service py-5">
+<div class="container-fluid service py-5">
         <div class="container">
             <div class="text-center wow fadeIn" data-wow-delay="0.1s">
                 <h1 class="font-dancing-script text-primary">Our Services</h1>
@@ -165,11 +165,11 @@
                 </div>
             </div>
         </div>
-    </div>
+</div>
     <!-- Services End -->
     
     <!-- Gallery Start -->
-    <div class="container-fluid gallery py-5">
+<div class="container-fluid gallery py-5">
         <div class="container">
             <div class="text-center wow fadeIn" data-wow-delay="0.2s">
                 <h1 class="font-dancing-script text-primary">Gallery</h1>
@@ -225,11 +225,11 @@
                 </div>
             </div>
         </div>
-    </div>
+</div>
     <!-- Gallery End -->
 
     <!-- Testimonials Start -->
-    <div class="container-fluid py-5">
+<div class="container-fluid py-5">
         <div class="container">
             <div class="text-center wow fadeIn" data-wow-delay="0.2s">
                 <h1 class="font-dancing-script text-primary">Testimonial</h1>
@@ -256,11 +256,11 @@
                 </div>
             </div>
         </div>
-    </div>
+</div>
     <!-- Testimonials End -->
 
     <!-- Sejarah Start -->
-    <div class="container-fluid py-5">
+<div class="container-fluid py-5">
         <div class="container">
             <div class="row g-5 align-items-center">
                 <div class="col-lg-6 wow fadeIn text-center" data-wow-delay="0.2s">
@@ -280,11 +280,11 @@
                 </div>
             </div>
         </div>
-    </div>
+</div>
     <!-- Sejarah End -->
 
     <!-- Tenaga Kerja -->
-    <div class="container-fluid overflow-hidden py-5 d-flex align-items-center justify-content-center" style="min-height: 80vh;">
+<div class="container-fluid overflow-hidden py-5 d-flex align-items-center justify-content-center" style="min-height: 80vh;">
         <div class="container">
             <div class="text-center wow fadeIn" data-wow-delay="0.2s">
                 <h1 class="font-dancing-script text-primary">Tenaga Kerja</h1>
@@ -354,11 +354,11 @@
                 </div>
             </div>
         </div>
-    </div>
+</div>
     <!-- Tenaga Kerja -->
     
     <!-- Partners Start -->
-    <div class="partners-section">
+<div class="partners-section">
         <h1>Partners</h1>
         <p>Awesome People We Work With</p>
     </div>
@@ -377,58 +377,72 @@
             <p>Agensi kreatif yang berfokus pada branding, desain visual, dan strategi digital untuk meningkatkan citra bisnis.</p>
             <a href="#" class="read-more">READ MORE &rarr;</a>
         </div>
-    </div>
+</div>
  <!-- Partners End -->
 
-    <!-- Contact Start -->
-    <div class="container-fluid py-5">
-        <div class="container">
-            <div class="text-center wow fadeIn" data-wow-delay="0.1s">
-                <h1 class="font-dancing-script text-primary">Contact</h1>
-                <h1 class="mb-5">Have Any Query? Contact Us</h1>
-            </div>
-            <div class="row justify-content-center">
-                <div class="col-lg-7">
-                    <p class="text-center mb-4">The contact form is currently inactive. Get a functional and working
-                        contact form with Ajax & PHP in a few minutes. Just copy and paste the files, add a little code
-                        and you're done. <a href="https://htmlcodex.com/contact-form">Download Now</a>.</p>
-                    <div class="wow fadeIn" data-wow-delay="0.3s">
-                        <form>
-                            <div class="row g-3">
-                                <div class="col-md-6">
-                                    <div class="form-floating">
-                                        <input type="text" class="form-control" id="name" placeholder="Your Name">
-                                        <label for="name">Your Name</label>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-floating">
-                                        <input type="email" class="form-control" id="email" placeholder="Your Email">
-                                        <label for="email">Your Email</label>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="form-floating">
-                                        <input type="text" class="form-control" id="subject" placeholder="Subject">
-                                        <label for="subject">Subject</label>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="form-floating">
-                                        <textarea class="form-control" placeholder="Leave a message here" id="message"
-                                            style="height: 150px"></textarea>
-                                        <label for="message">Message</label>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <button class="btn btn-primary w-100 py-3 ms-0" type="submit">SEND MESSAGE</button>
+<!-- Contact Start -->
+<div class="container-fluid py-5">
+    <div class="container">
+        <div class="text-center wow fadeIn" data-wow-delay="0.1s">
+            <h1 class="font-dancing-script text-primary">Contact</h1>
+            <h1 class="mb-5">Have Any Query? Contact Us</h1>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-7">
+                <p class="text-center mb-4">The contact form is currently inactive. Get a functional and working
+                    contact form with Ajax & PHP in a few minutes. Just copy and paste the files, add a little code
+                    and you're done. <a href="https://htmlcodex.com/contact-form">Download Now</a>.</p>
+
+                <!-- Tambahan: Alert sukses -->
+                @if(session('success'))
+                    <div class="alert alert-success text-center">
+                        {{ session('success') }}
+                    </div>
+                @endif
+
+                <div class="wow fadeIn" data-wow-delay="0.3s">
+                    <!-- Tambahan: action & csrf -->
+                    <form action="{{ route('contact.send') }}" method="POST">
+                        @csrf
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <!-- Tambahan: name="name" -->
+                                    <input type="text" class="form-control" id="name" name="name" placeholder="Your Name" required>
+                                    <label for="name">Your Name</label>
                                 </div>
                             </div>
-                        </form>
-                    </div>
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <!-- Tambahan: name="email" -->
+                                    <input type="email" class="form-control" id="email" name="email" placeholder="Your Email" required>
+                                    <label for="email">Your Email</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <!-- Tambahan: name="subject" -->
+                                    <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject" required>
+                                    <label for="subject">Subject</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <!-- Tambahan: name="message" -->
+                                    <textarea class="form-control" id="message" name="message" placeholder="Leave a message here" style="height: 150px" required></textarea>
+                                    <label for="message">Message</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <button class="btn btn-primary w-100 py-3 ms-0" type="submit">SEND MESSAGE</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
+</div>
 <!-- Contact End -->
+
 @endsection
