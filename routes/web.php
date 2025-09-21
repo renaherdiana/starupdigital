@@ -100,7 +100,8 @@ Route::middleware('auth')->group(function () {
    // Messages (pesan dari frontend)
 Route::prefix('messages')->group(function () {
     Route::get('/', [MessageBackendController::class, 'index'])->name('messages.index');
-    Route::delete('{id}', [MessageBackendController::class, 'destroy'])->name('messages.destroy');
+    Route::get('/{id}', [MessageBackendController::class, 'show'])->name('messages.show');
+    Route::delete('/{id}', [MessageBackendController::class, 'destroy'])->name('messages.destroy');
 });
 
 
