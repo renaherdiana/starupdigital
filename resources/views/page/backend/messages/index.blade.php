@@ -39,6 +39,9 @@
                             <td class="text-center">
                                 <div class="d-flex flex-column align-items-center">
                                     <div class="d-flex gap-2 mb-2">
+                                        <!-- Detail -->
+                                        <a href="{{ route('messages.show', $message->id) }}" class="btn btn-info btn-sm">Detail</a>
+
                                         <!-- Hapus -->
                                         <form action="{{ route('messages.destroy', $message->id) }}" method="POST" onsubmit="return confirm('Yakin mau hapus?')">
                                             @csrf
