@@ -24,6 +24,17 @@
                          style="width:180px; height:180px; object-fit:cover;">
                 @endif
                 <h2 class="fw-bold fs-3">{{ $testimonial->name }}</h2>
+
+                <!-- Rating -->
+                <div class="mt-2">
+                    @for($i = 1; $i <= 5; $i++)
+                        @if($i <= $testimonial->rating)
+                            <i class="bi bi-star-fill text-warning fs-5"></i>
+                        @else
+                            <i class="bi bi-star text-warning fs-5"></i>
+                        @endif
+                    @endfor
+                </div>
             </div>
 
             <!-- Testimoni -->

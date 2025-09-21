@@ -3,8 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use App\Models\Message; // pastikan model Message sudah ada
+use App\Models\Message;
 
 class MessageBackendController extends Controller
 {
@@ -14,16 +13,7 @@ class MessageBackendController extends Controller
     public function index()
     {
         $messages = Message::latest()->paginate(10); // urutkan dari terbaru
-        return view('page.backend.message.index', compact('messages'));
-    }
-
-    /**
-     * Tampilkan detail pesan
-     */
-    public function show($id)
-    {
-        $message = Message::findOrFail($id);
-        return view('page.backend.message.show', compact('message'));
+        return view('page.backend.messages.index', compact('messages')); // folder plural biar konsisten
     }
 
     /**
@@ -34,6 +24,6 @@ class MessageBackendController extends Controller
         $message = Message::findOrFail($id);
         $message->delete();
 
-        return redirect()->route('message.index')->with('success', 'Pesan berhasil dihapus.');
+        return redirect()->route('messages.index')->with('success', 'Pesan berhasil dihapus.');
     }
 }

@@ -2,13 +2,38 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Hero;
+use App\Models\SocialMedia;
+use App\Models\About;
+use App\Models\Service;
+use App\Models\Galeri;
+use App\Models\Testimonial;
+use App\Models\Partner;
+use App\Models\Contact;
 
 class HomeFrontendController extends Controller
 {
-    // index
-    public function index(){
-        return view('page.frontend.home.index');
+    public function index()
+    {
+        $hero         = Hero::active()->first();
+        $social       = SocialMedia::where('is_active', 1)->first();
+        $about        = About::where('is_active', 1)->latest()->first();
+        $services     = Service::where('is_active', 1)->get();
+        $galeris      = Galeri::where('active', 1)->get();
+        $testimonials = Testimonial::where('is_active', 1)->get();
+        $partners     = Partner::where('is_active', 1)->get();
+        $contact      = Contact::where('is_active', 1)->latest()->first();
+
+        return view('page.frontend.home.index', compact(
+            'hero',
+            'social',
+            'about',
+            'services',
+            'galeris',
+            'testimonials',
+            'partners',
+            'contact'
+        ));
     }
 }

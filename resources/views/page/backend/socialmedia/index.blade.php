@@ -20,9 +20,9 @@
                 <table class="table table-dark table-hover align-middle mb-0">
                     <thead>
                         <tr>
-                            <th style="width: 5%;">ID</th>
-                            <th style="width: 20%;">Title</th>
-                            <th style="width: 45%;">Description</th>
+                            <th style="width: 5%;" class="text-center">ID</th>
+                            <th style="width: 25%;">Title</th>
+                            <th style="width: 50%;">Description</th>
                             <th style="width: 20%;" class="text-center">Actions</th>
                         </tr>
                     </thead>
@@ -31,15 +31,21 @@
                         <tr>
                             <td class="text-center">{{ $social->id }}</td>
                             <td class="fw-semibold">{{ $social->title }}</td>
-                            <td>{{ Str::limit($social->description, 50) }}</td>
+                            <td>{{ \Illuminate\Support\Str::limit($social->description, 60, '...') }}</td>
                             <td class="text-center">
                                 <div class="d-flex gap-2 justify-content-center">
-                                    <a href="{{ route('socialmedia.edit', $social->id) }}" class="btn btn-primary btn-sm">Edit</a>
-                                    <a href="{{ route('socialmedia.show', $social->id) }}" class="btn btn-info btn-sm">Detail</a>
-                                    <form action="{{ route('socialmedia.destroy', $social->id) }}" method="POST" onsubmit="return confirm('Yakin hapus data ini?')" style="display:inline;">
+                                    <a href="{{ route('socialmedia.edit', $social) }}" class="btn btn-primary btn-sm">
+                                        <i class="bi bi-pencil-fill"></i> Edit
+                                    </a>
+                                    <a href="{{ route('socialmedia.show', $social) }}" class="btn btn-info btn-sm">
+                                        <i class="bi bi-eye-fill"></i> Detail
+                                    </a>
+                                    <form action="{{ route('socialmedia.destroy', $social) }}" method="POST" onsubmit="return confirm('Yakin hapus data ini?')" style="display:inline;">
                                         @csrf
                                         @method('DELETE')
-                                        <button class="btn btn-danger btn-sm">Delete</button>
+                                        <button class="btn btn-danger btn-sm">
+                                            <i class="bi bi-trash-fill"></i> Delete
+                                        </button>
                                     </form>
                                 </div>
                             </td>

@@ -10,8 +10,15 @@
     <div class="col-md-12">
         <div class="bg-secondary rounded-3 shadow-sm p-4 text-white">
             
-            <form action="{{ route('services.store') }}" method="POST">
+            <!-- Form Tambah Service -->
+            <form action="{{ route('services.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
+
+                <!-- Input Photo -->
+                <div class="mb-3">
+                    <label for="photo" class="form-label fw-semibold">Photo</label>
+                    <input type="file" name="photo" id="photo" class="form-control bg-dark text-white">
+                </div>
 
                 <!-- Input Service Name -->
                 <div class="mb-3">

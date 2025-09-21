@@ -47,50 +47,52 @@
     </div>
 </div>
 
-<!-- Catatan Admin -->
+<!-- Hero Section -->
 <div class="bg-secondary rounded-3 p-4 text-white shadow-sm">
     <div class="d-flex justify-content-between align-items-center mb-3">
-        <h5 class="mb-0 fw-bold">Catatan Admin</h5>
-        <a href="{{ route('dashboard.createAdminNote') }}" class="btn btn-success btn-sm px-3">
-            <i class="bi bi-plus-lg me-1"></i> Tambah
+        <h5 class="mb-0 fw-bold">Hero</h5>
+        <a href="{{ route('dashboard.createHero') }}" class="btn btn-success btn-sm px-3">
+            <i class="bi bi-plus-lg me-1"></i> Tambah Hero
         </a>
     </div>
 
     <div class="table-responsive">
         <table class="table table-dark table-hover align-middle mb-0">
             <thead class="table-dark">
-                <tr class="text-white text-center">
+                <tr class="text-center text-white">
                     <th style="width:5%">No</th>
-                    <th class="text-start">Catatan</th>
-                    <th style="width:15%">Tanggal</th>
+                    <th style="width:15%">Foto</th>
+                    <th>Judul</th>
                     <th style="width:20%">Action</th>
                 </tr>
             </thead>
             <tbody>
-                @forelse($adminNotes as $index => $note)
+                @forelse($heros as $index => $hero)
                     <tr>
                         <td class="text-center">{{ $index + 1 }}</td>
-                        <td class="text-start">{{ $note->note }}</td>
-                        <td class="text-center">{{ $note->created_at->format('d M Y') }}</td>
                         <td class="text-center">
-                            <a href="{{ route('dashboard.editAdminNote', $note->id) }}" 
-                               class="btn btn-sm btn-primary me-2">
-                               <i class="bi bi-pencil-square"></i> Edit
-                            </a>
-                            <form action="{{ route('dashboard.destroyAdminNote', $note->id) }}" 
-                                  method="POST" style="display:inline;">
-                                @csrf
-                                @method('DELETE')
-                                <button class="btn btn-sm btn-danger" 
-                                        onclick="return confirm('Yakin ingin menghapus catatan ini?')">
-                                    <i class="bi bi-trash"></i> Delete
-                                </button>
-                            </form>
+                            @if($hero->image)
+                                <img src="{{ asset('storage/' . $hero->image) }}" alt="{{ $hero->title }}" class="rounded-circle" style="width:60px;height:60px;object-fit:cover;">
+                            @else
+                                <img src="{{ asset('assetsbackend/img/default-user.jpg') }}" class="rounded-circle" style="width:60px;height:60px;object-fit:cover;">
+                            @endif
+                        </td>
+                        <td class="text-start">{{ $hero->title }}</td>
+                        <td class="text-center">
+                            <div class="d-flex justify-content-center gap-2">
+                                <a href="{{ route('dashboard.editHero', $hero->id) }}" class="btn btn-sm btn-primary">Edit</a>
+                                <form action="{{ route('dashboard.destroyHero', $hero->id) }}" method="POST" onsubmit="return confirm('Yakin ingin menghapus?')">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                </form>
+                                <a href="{{ route('dashboard.showHero', $hero->id) }}" class="btn btn-sm btn-info">Detail</a>
+                            </div>
                         </td>
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="4" class="text-center text-muted">Belum ada catatan admin.</td>
+                        <td colspan="4" class="text-center text-muted">Belum ada Hero.</td>
                     </tr>
                 @endforelse
             </tbody>

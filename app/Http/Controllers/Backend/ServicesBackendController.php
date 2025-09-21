@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Models\Service;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ServicesBackendController extends Controller
 {
@@ -24,14 +25,21 @@ class ServicesBackendController extends Controller
         $request->validate([
             'title' => 'required|max:255',
             'description' => 'nullable|string',
+            'photo' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:2048',
             'is_active' => 'nullable|in:0,1',
         ]);
 
-        Service::create([
+        $data = [
             'title' => $request->title,
             'description' => $request->description,
             'is_active' => $request->has('is_active') ? 1 : 0,
-        ]);
+        ];
+
+        if ($request->hasFile('photo')) {
+            $data['photo'] = $request->file('photo')->store('services', 'public');
+        }
+
+        Service::create($data);
 
         return redirect()->route('services.index')
             ->with('success', 'Service created successfully.');
@@ -53,22 +61,36 @@ class ServicesBackendController extends Controller
         $request->validate([
             'title' => 'required|max:255',
             'description' => 'nullable|string',
+            'photo' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:2048',
             'is_active' => 'nullable|boolean',
         ]);
 
-        $service->update([
+        $data = [
             'title' => $request->title,
             'description' => $request->description,
             'is_active' => $request->has('is_active') ? 1 : 0,
-        ]);
+        ];
+
+        if ($request->hasFile('photo')) {
+            // Hapus photo lama jika ada
+            if ($service->photo) {
+                Storage::disk('public')->delete($service->photo);
+            }
+            $data['photo'] = $request->file('photo')->store('services', 'public');
+        }
+
+        $service->update($data);
 
         return redirect()->route('services.index')->with('success', 'Service updated successfully.');
     }
 
-
     public function destroy(Service $service)
     {
+        if ($service->photo) {
+            Storage::disk('public')->delete($service->photo);
+        }
         $service->delete();
+
         return redirect()->route('services.index')
             ->with('success', 'Data berhasil dihapus');
     }

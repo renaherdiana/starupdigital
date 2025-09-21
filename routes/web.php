@@ -36,13 +36,14 @@ Route::middleware('auth')->group(function () {
     // Dashboard
     Route::get('/dashboard', [DashboardBackendController::class, 'index'])->name('dashboard.index');
 
-    // Admin Notes
-    Route::prefix('dashboard/admin-notes')->group(function () {
-        Route::get('create', [DashboardBackendController::class, 'createAdminNote'])->name('dashboard.createAdminNote');
-        Route::post('/', [DashboardBackendController::class, 'storeAdminNote'])->name('dashboard.storeAdminNote');
-        Route::get('{id}/edit', [DashboardBackendController::class, 'editAdminNote'])->name('dashboard.editAdminNote');
-        Route::put('{id}', [DashboardBackendController::class, 'updateAdminNote'])->name('dashboard.updateAdminNote');
-        Route::delete('{id}', [DashboardBackendController::class, 'destroyAdminNote'])->name('dashboard.destroyAdminNote');
+    // Hero routes
+    Route::prefix('dashboard/hero')->group(function () {
+        Route::get('create', [DashboardBackendController::class, 'createHero'])->name('dashboard.createHero');
+        Route::post('/', [DashboardBackendController::class, 'storeHero'])->name('dashboard.storeHero');
+        Route::get('{id}/edit', [DashboardBackendController::class, 'editHero'])->name('dashboard.editHero');
+        Route::put('{id}', [DashboardBackendController::class, 'updateHero'])->name('dashboard.updateHero');
+        Route::delete('{id}', [DashboardBackendController::class, 'destroyHero'])->name('dashboard.destroyHero');
+        Route::get('dashboard/hero/{id}', [DashboardBackendController::class, 'showHero'])->name('dashboard.showHero');
     });
 
     // About
@@ -93,15 +94,15 @@ Route::middleware('auth')->group(function () {
         Route::get('{id}/toggle', [PartnersBackendController::class, 'toggleActive'])->name('partners.toggle');
     });
 
-    // Contact
+    // Contact (title, subtitle, description)
     Route::resource('contact', ContactBackendController::class);
 
-    // Messages
-    Route::prefix('messages')->group(function () {
-        Route::get('/', [MessageBackendController::class, 'index'])->name('messages.index');
-        Route::get('{id}', [MessageBackendController::class, 'show'])->name('messages.show');
-        Route::delete('{id}', [MessageBackendController::class, 'destroy'])->name('messages.destroy');
-    });
+   // Messages (pesan dari frontend)
+Route::prefix('messages')->group(function () {
+    Route::get('/', [MessageBackendController::class, 'index'])->name('messages.index');
+    Route::delete('{id}', [MessageBackendController::class, 'destroy'])->name('messages.destroy');
+});
+
 
     // Social Media
     Route::resource('socialmedia', SocialMediaBackendController::class);
@@ -109,6 +110,18 @@ Route::middleware('auth')->group(function () {
 
 // ------------------- FRONTEND -------------------
 Route::get('/index', [HomeFrontendController::class, 'index'])->name('frontend.home');
-Route::get('/sejarah', [SejarahFrontendController::class, 'index'])->name('frontend.sejarah');
+
+Route::prefix('frontend')->group(function () {
+    Route::get('/about', [HomeFrontendController::class, 'index'])->name('frontend.about');
+    Route::get('/services', [HomeFrontendController::class, 'index'])->name('frontend.services');
+    Route::get('/galeri', [HomeFrontendController::class, 'index'])->name('frontend.galeri');
+    Route::get('/testimonial', [HomeFrontendController::class, 'index'])->name('frontend.testimonial');
+    Route::get('/partners', [HomeFrontendController::class, 'partners'])->name('frontend.partners');
+});
+
+// Sejarah & Tenaga Kerja (Frontend)
+Route::get('/tentang/sejarah', [SejarahFrontendController::class, 'index'])->name('frontend.sejarah');
 Route::get('/tenagakerja', [TenagakerjaFrontendController::class, 'index'])->name('frontend.tenagakerja');
+
+/// Kirim pesan contact
 Route::post('/contact/send', [MessageFrontendController::class, 'store'])->name('contact.send');

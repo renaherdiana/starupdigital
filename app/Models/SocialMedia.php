@@ -9,24 +9,37 @@ class SocialMedia extends Model
 {
     use HasFactory;
 
-    // 👇 tambahin ini biar cocok sama nama tabel di migrasi
     protected $table = 'social_medias';
 
     protected $fillable = [
-        'title',
-        'description',
-        'twitter',
-        'twitter_image',
-        'facebook',
-        'facebook_image',
-        'linkedin',
-        'linkedin_image',
-        'instagram',
-        'instagram_image',
-        'is_active',
+    
+    'title',
+    'description',
+    'is_active',
+
+    'twitter',
+    'twitter_url',
+    'twitter_username',
+    'twitter_image',
+
+    'facebook',
+    'facebook_url',
+    'facebook_username',
+    'facebook_image',
+
+    'linkedin',
+    'linkedin_url',
+    'linkedin_username',
+    'linkedin_image',
+
+    'instagram',
+    'instagram_url',
+    'instagram_username',
+    'instagram_image',
     ];
 
-    // accessor buat tampilkan gambar full path (optional)
+
+    // Accessor untuk gambar
     public function getTwitterImageUrlAttribute()
     {
         return $this->twitter_image ? asset('storage/' . $this->twitter_image) : null;

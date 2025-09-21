@@ -10,9 +10,19 @@
     <div class="col-md-12">
         <div class="bg-secondary rounded-3 shadow-sm p-5 text-white">
 
-            <form action="{{ route('services.update', $service->id) }}" method="POST">
+            <form action="{{ route('services.update', $service->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
+
+                <!-- Photo Centered -->
+                @if($service->photo)
+                    <div class="text-center mb-3">
+                        <img src="{{ asset('storage/'.$service->photo) }}" 
+                             alt="Current Photo" 
+                             style="width:120px; height:120px; object-fit:cover; border-radius:50%;">
+                    </div>
+                @endif
+                <input type="file" name="photo" id="photo" class="form-control bg-dark text-white mb-4">
 
                 <!-- Service Name -->
                 <div class="mb-3">

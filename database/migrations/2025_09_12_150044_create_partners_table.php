@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('partners', function (Blueprint $table) {
             $table->id();
-            $table->string('name');            // Nama partner
-            $table->text('description');       // Deskripsi partner
-            $table->string('photo')->nullable(); // Foto partner (nullable)
-            $table->boolean('is_active')->default(1); // Status aktif/inaktif
-            $table->timestamps();              // created_at & updated_at
+            $table->string('name');            
+            $table->text('description');      
+            $table->string('photo')->nullable();
+            $table->boolean('is_active')->default(1); 
+            $table->timestamps();              
         });
     }
 

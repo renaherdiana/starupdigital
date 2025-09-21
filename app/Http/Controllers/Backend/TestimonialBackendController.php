@@ -29,6 +29,7 @@ class TestimonialBackendController extends Controller
             'name'        => 'required|string|max:255',
             'testimonial' => 'required|string',
             'photo'       => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+            'rating'      => 'required|integer|min:1|max:5', // <-- tambah validasi rating
             'is_active'   => 'nullable|boolean',
         ]);
 
@@ -41,6 +42,7 @@ class TestimonialBackendController extends Controller
             'name'        => $request->name,
             'testimonial' => $request->testimonial,
             'photo'       => $filename,
+            'rating'      => $request->rating, // <-- simpan rating
             'is_active'   => $request->has('is_active') ? 1 : 0,
         ]);
 
@@ -70,6 +72,7 @@ class TestimonialBackendController extends Controller
             'name'        => 'required|string|max:255',
             'testimonial' => 'required|string',
             'photo'       => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+            'rating'      => 'required|integer|min:1|max:5', // <-- tambah validasi rating
             'is_active'   => 'nullable|boolean',
         ]);
 
@@ -82,6 +85,7 @@ class TestimonialBackendController extends Controller
 
         $testimonial->name        = $request->name;
         $testimonial->testimonial = $request->testimonial;
+        $testimonial->rating      = $request->rating; // <-- update rating
         $testimonial->is_active   = $request->has('is_active') ? 1 : 0;
 
         $testimonial->save();
@@ -112,10 +116,11 @@ class TestimonialBackendController extends Controller
 
         return redirect()->route('testimonial.index')->with('success', 'Status testimonial berhasil diubah');
     }
+
+    // Tampilkan detail testimonial
     public function show($id)
     {
         $testimonial = Testimonial::findOrFail($id);
         return view('page.backend.testimonial.show', compact('testimonial'));
     }
-
 }
