@@ -11,8 +11,9 @@ class testimonial extends Model
 
     protected $fillable = [
         'name',
-        'testimonial', // ini kolom utama untuk isi testimoni
+        'testimonial',
         'photo',
+        'rating',
         'is_active',
         ];
 }

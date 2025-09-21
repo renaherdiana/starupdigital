@@ -2,7 +2,7 @@
 <div class="sidebar pe-4 pb-3" id="sidebar">
     <nav class="navbar bg-secondary navbar-dark">
         <!-- Logo / Brand -->
-        <a href="{{ url('/dashboard') }}" class="navbar-brand mx-4 mb-3 d-flex align-items-center">
+        <a href="{{ route('dashboard.index') }}" class="navbar-brand mx-4 mb-3 d-flex align-items-center">
             <h3 class="text-primary mb-0">NeoWeb</h3>
         </a>
 
@@ -14,50 +14,49 @@
                 <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
             </div>
             <div class="ms-3">
-                <h6 class="mb-0">Admin</h6>
+                <h6 class="mb-0">{{ Auth::user()->name }}</h6>
                 <span>Kelompok4</span>
             </div>
         </div>
 
         <!-- Menu -->
         <div class="navbar-nav w-100">
-            <a href="{{ url('/dashboard') }}" class="nav-item nav-link {{ request()->segment(1) == 'dashboard' ? 'active' : '' }}">
+            <a href="{{ route('dashboard.index') }}" class="nav-item nav-link {{ request()->routeIs('dashboard.*') ? 'active' : '' }}">
                 <i class="fas fa-home me-2"></i>Dashboard
             </a>
-            <a href="{{ url('/about') }}" class="nav-item nav-link {{ request()->segment(1) == 'about' ? 'active' : '' }}">
+            <a href="{{ route('about.index') }}" class="nav-item nav-link {{ request()->routeIs('about.*') ? 'active' : '' }}">
                 <i class="fas fa-info-circle me-2"></i>About
             </a>
-            <a href="{{ url('/services') }}" class="nav-item nav-link {{ request()->segment(1) == 'services' ? 'active' : '' }}">
+            <a href="{{ route('services.index') }}" class="nav-item nav-link {{ request()->routeIs('services.*') ? 'active' : '' }}">
                 <i class="fas fa-cogs me-2"></i>Services
             </a>
-            <a href="{{ url('/galeri') }}" class="nav-item nav-link {{ request()->segment(1) == 'galeri' ? 'active' : '' }}">
+            <a href="{{ route('galeri.index') }}" class="nav-item nav-link {{ request()->routeIs('galeri.*') ? 'active' : '' }}">
                 <i class="fas fa-image me-2"></i>Galeri
             </a>
-            <a href="{{ url('/testimonial') }}" class="nav-item nav-link {{ request()->segment(1) == 'testimonial' ? 'active' : '' }}">
+            <a href="{{ route('testimonial.index') }}" class="nav-item nav-link {{ request()->routeIs('testimonial.*') ? 'active' : '' }}">
                 <i class="fas fa-comments me-2"></i>Testimonial
             </a>
-            <a href="{{ url('/sejarah') }}" class="nav-item nav-link {{ request()->segment(1) == 'sejarah' ? 'active' : '' }}">
+            <a href="{{ route('sejarah.index') }}" class="nav-item nav-link {{ request()->routeIs('sejarah.*') ? 'active' : '' }}">
                 <i class="fas fa-history me-2"></i>Sejarah
             </a>
-            <a href="{{ url('/tenaga-kerja') }}" class="nav-item nav-link {{ request()->segment(1) == 'tenaga-kerja' ? 'active' : '' }}">
+            <a href="{{ route('tenaga-kerja.index') }}" class="nav-item nav-link {{ request()->routeIs('tenaga-kerja.*') ? 'active' : '' }}">
                 <i class="fas fa-users me-2"></i>Tenaga Kerja
             </a>
-            <a href="{{ url('/partners') }}" class="nav-item nav-link {{ request()->segment(1) == 'partners' ? 'active' : '' }}">
+            <a href="{{ route('partners.index') }}" class="nav-item nav-link {{ request()->routeIs('partners.*') ? 'active' : '' }}">
                 <i class="fas fa-handshake me-2"></i>Partners
             </a>
-            <a href="{{ url('/contact') }}" class="nav-item nav-link {{ request()->segment(1) == 'contact' ? 'active' : '' }}">
+            <a href="{{ route('contact.index') }}" class="nav-item nav-link {{ request()->routeIs('contact.*') ? 'active' : '' }}">
                 <i class="fas fa-envelope me-2"></i>Contact
             </a>
-            <a href="{{ route('messages.index') }}" class="nav-item nav-link {{ request()->segment(1) == 'messages' ? 'active' : '' }}">
+            <a href="{{ route('messages.index') }}" class="nav-item nav-link {{ request()->routeIs('messages.*') ? 'active' : '' }}">
                 <i class="fas fa-envelope-open-text me-2"></i>Message
             </a>
-
-            <a href="{{ route('socialmedia.index') }}" class="nav-item nav-link {{ request()->segment(1) == 'socialmedia' ? 'active' : '' }}">
+            <a href="{{ route('socialmedia.index') }}" class="nav-item nav-link {{ request()->routeIs('socialmedia.*') ? 'active' : '' }}">
                 <i class="fas fa-share-alt me-2"></i>Social Media
             </a>
 
             <!-- Log Out -->
-            <form action="{{ route('logout') }}" method="POST" class="nav-item">
+            <form action="{{ route('logout') }}" method="POST" class="nav-item mt-3">
                 @csrf
                 <button type="submit" class="nav-link btn btn-link text-start p-0 m-0">
                     <i class="fas fa-sign-out-alt me-2"></i>Log Out

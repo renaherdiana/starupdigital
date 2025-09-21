@@ -8,13 +8,11 @@ use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
-    // Tampilkan form login
     public function showLoginForm()
     {
-        return view('page.auth.login'); // sesuaikan folder view kamu
+        return view('page.auth.login'); 
     }
 
-    // Proses login
     public function login(Request $request)
     {
         $credentials = $request->validate([
@@ -24,28 +22,17 @@ class LoginController extends Controller
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-
-            // cek role user
-            if (Auth::user()->role === 'admin') {
-                return redirect()->route('dashboard.index'); // ke backend
-            } else {
-                return redirect()->route('frontend.home'); // ke frontend
-            }
+            return redirect()->intended('/dashboard');
         }
 
-        return back()->withErrors([
-            'email' => 'Email atau password salah.',
-        ]);
+        return back()->withErrors(['email' => 'Login gagal']);
     }
 
-    // Proses logout
     public function logout(Request $request)
     {
         Auth::logout();
-
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-
-        return redirect()->route('login'); // kembali ke login
+        return redirect('/login');
     }
 }

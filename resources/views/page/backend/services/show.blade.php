@@ -11,8 +11,14 @@
     <div class="col-md-12">
         <div class="bg-secondary rounded-3 shadow-sm p-5 text-white">
 
-            <!-- Judul -->
+            <!-- Foto & Judul -->
             <div class="text-center mb-5">
+                @if($service->photo)
+                    <img src="{{ asset('storage/'.$service->photo) }}" 
+                         alt="{{ $service->title }}" 
+                         class="rounded-circle mb-3 shadow"
+                         style="width:180px; height:180px; object-fit:cover;">
+                @endif
                 <h2 class="fw-bold fs-3">{{ $service->title }}</h2>
             </div>
 

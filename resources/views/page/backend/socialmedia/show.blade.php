@@ -15,68 +15,58 @@
                 <p class="text-muted mb-0">{{ $social->description }}</p>
             </div>
 
-            <!-- Twitter -->
-            <div class="mb-4">
-                <h5 class="fw-bold">Twitter</h5>
-                <div class="bg-dark rounded p-3 d-flex align-items-center gap-3">
-                    @if($social->twitter_image)
-                        <img src="{{ asset('storage/'.$social->twitter_image) }}" 
-                             alt="Twitter" class="rounded" width="60">
-                    @endif
-                    <span class="fs-6">{{ $social->twitter ?? '-' }}</span>
-                </div>
-            </div>
+            <!-- Loop Social Platforms -->
+            @foreach (['twitter','facebook','linkedin','instagram'] as $platform)
+                @php
+                    $usernameField = $platform . '_username';
+                    $imageField = $platform . '_image';
+                    $urlField = $platform . '_url';
 
-            <!-- Facebook -->
-            <div class="mb-4">
-                <h5 class="fw-bold">Facebook</h5>
-                <div class="bg-dark rounded p-3 d-flex align-items-center gap-3">
-                    @if($social->facebook_image)
-                        <img src="{{ asset('storage/'.$social->facebook_image) }}" 
-                             alt="Facebook" class="rounded" width="60">
-                    @endif
-                    <span class="fs-6">{{ $social->facebook ?? '-' }}</span>
-                </div>
-            </div>
+                    $username = $social->$usernameField;
+                    $image = $social->$imageField 
+                        ? asset('storage/'.$social->$imageField) 
+                        : asset('img/' . $platform . '.png');
 
-            <!-- LinkedIn -->
-            <div class="mb-4">
-                <h5 class="fw-bold">LinkedIn</h5>
-                <div class="bg-dark rounded p-3 d-flex align-items-center gap-3">
-                    @if($social->linkedin_image)
-                        <img src="{{ asset('storage/'.$social->linkedin_image) }}" 
-                             alt="LinkedIn" class="rounded" width="60">
-                    @endif
-                    <span class="fs-6">{{ $social->linkedin ?? '-' }}</span>
-                </div>
-            </div>
+                    // Gunakan URL dari database jika ada, fallback ke username
+                    $url = $social->$urlField ?? match($platform) {
+                        'twitter' => $username ? 'https://twitter.com/'.ltrim($username,'@') : null,
+                        'facebook' => $username ? 'https://facebook.com/'.$username : null,
+                        'linkedin' => $username ? 'https://linkedin.com/in/'.$username : null,
+                        'instagram' => $username ? 'https://instagram.com/'.ltrim($username,'@') : null,
+                        default => null
+                    };
+                @endphp
 
-            <!-- Instagram -->
-            <div class="mb-4">
-                <h5 class="fw-bold">Instagram</h5>
-                <div class="bg-dark rounded p-3 d-flex align-items-center gap-3">
-                    @if($social->instagram_image)
-                        <img src="{{ asset('storage/'.$social->instagram_image) }}" 
-                             alt="Instagram" class="rounded" width="60">
-                    @endif
-                    <span class="fs-6">{{ $social->instagram ?? '-' }}</span>
-                </div>
-            </div>
+                @if($username)
+                    <div class="mb-4">
+                        <h5 class="fw-bold">{{ ucfirst($platform) }}</h5>
+                        <div class="bg-dark rounded p-3 d-flex align-items-center gap-3">
+                            @if($image)
+                                <img src="{{ $image }}" alt="{{ ucfirst($platform) }}" class="rounded" width="60">
+                            @endif
+                            <div class="d-flex flex-column">
+                                <span class="fw-semibold text-white">{{ ucfirst($platform) }}</span>
+                                <a href="{{ $url }}" target="_blank" rel="noopener noreferrer" class="text-decoration-none text-white-50">
+                                    {{ $username }}
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                @endif
+            @endforeach
 
             <!-- Status -->
             <div class="mb-4">
                 <h5 class="fw-bold">Status</h5>
                 <div class="bg-dark rounded p-3">
-                    <span class="fs-6">
-                        {{ $social->is_active ? 'Active' : 'Inactive' }}
-                    </span>
+                    <span class="fs-6">{{ $social->is_active ? 'Active' : 'Inactive' }}</span>
                 </div>
             </div>
 
             <!-- Tombol Kembali -->
             <div class="text-center mt-5">
                 <a href="{{ route('socialmedia.index') }}" class="btn btn-danger px-5 py-2 fw-bold">
-                    Kembali
+                    <i class="bi bi-arrow-left me-2"></i> Kembali
                 </a>
             </div>
 

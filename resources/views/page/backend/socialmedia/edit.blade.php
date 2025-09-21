@@ -9,7 +9,7 @@
     <div class="col-md-12">
         <div class="bg-secondary rounded-3 shadow-sm p-4 text-white">
 
-            <form action="{{ route('socialmedia.update', $social->id) }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('socialmedia.update', $social) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
 
@@ -28,73 +28,33 @@
                               class="form-control bg-dark text-white" required>{{ old('description', $social->description) }}</textarea>
                 </div>
 
-                <!-- Twitter -->
-                <div class="mb-3">
-                    <label for="twitter" class="form-label fw-semibold">Twitter Link</label>
-                    <input type="text" name="twitter" id="twitter" 
-                           class="form-control bg-dark text-white" 
-                           value="{{ old('twitter', $social->twitter) }}">
-                </div>
-                <div class="mb-3">
-                    <label for="twitter_image" class="form-label fw-semibold">Twitter Image</label>
-                    <input type="file" name="twitter_image" id="twitter_image" class="form-control bg-dark text-white">
-                    @if($social->twitter_image)
-                        <div class="mt-2">
-                            <img src="{{ asset('storage/'.$social->twitter_image) }}" alt="Twitter Logo" class="img-thumbnail" width="120">
-                        </div>
-                    @endif
-                </div>
+                <!-- Social Platforms -->
+                @foreach (['twitter', 'facebook', 'linkedin', 'instagram'] as $platform)
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">{{ ucfirst($platform) }} URL</label>
+                        <input type="url" name="{{ $platform }}_url" 
+                               class="form-control bg-dark text-white mb-2" 
+                               placeholder="https://example.com" 
+                               value="{{ old($platform.'_url', $social->{$platform.'_url'}) }}">
 
-                <!-- Facebook -->
-                <div class="mb-3">
-                    <label for="facebook" class="form-label fw-semibold">Facebook Link</label>
-                    <input type="text" name="facebook" id="facebook" 
-                           class="form-control bg-dark text-white" 
-                           value="{{ old('facebook', $social->facebook) }}">
-                </div>
-                <div class="mb-3">
-                    <label for="facebook_image" class="form-label fw-semibold">Facebook Image</label>
-                    <input type="file" name="facebook_image" id="facebook_image" class="form-control bg-dark text-white">
-                    @if($social->facebook_image)
-                        <div class="mt-2">
-                            <img src="{{ asset('storage/'.$social->facebook_image) }}" alt="Facebook Logo" class="img-thumbnail" width="120">
-                        </div>
-                    @endif
-                </div>
+                        <label class="form-label fw-semibold">{{ ucfirst($platform) }} Username</label>
+                        <input type="text" name="{{ $platform }}_username" 
+                               class="form-control bg-dark text-white mb-2" 
+                               placeholder="Masukkan username {{ ucfirst($platform) }}" 
+                               value="{{ old($platform.'_username', $social->{$platform.'_username'}) }}">
 
-                <!-- LinkedIn -->
-                <div class="mb-3">
-                    <label for="linkedin" class="form-label fw-semibold">LinkedIn Link</label>
-                    <input type="text" name="linkedin" id="linkedin" 
-                           class="form-control bg-dark text-white" 
-                           value="{{ old('linkedin', $social->linkedin) }}">
-                </div>
-                <div class="mb-3">
-                    <label for="linkedin_image" class="form-label fw-semibold">LinkedIn Image</label>
-                    <input type="file" name="linkedin_image" id="linkedin_image" class="form-control bg-dark text-white">
-                    @if($social->linkedin_image)
-                        <div class="mt-2">
-                            <img src="{{ asset('storage/'.$social->linkedin_image) }}" alt="LinkedIn Logo" class="img-thumbnail" width="120">
-                        </div>
-                    @endif
-                </div>
+                        <label class="form-label fw-semibold">{{ ucfirst($platform) }} Image</label>
+                        <input type="file" name="{{ $platform }}_image" 
+                               class="form-control bg-dark text-white" accept="image/*">
 
-                <!-- Instagram -->
-                <div class="mb-3">
-                    <label for="instagram" class="form-label fw-semibold">Instagram Link</label>
-                    <input type="text" name="instagram" id="instagram" 
-                           class="form-control bg-dark text-white" 
-                           value="{{ old('instagram', $social->instagram) }}">
-                </div>
-                <div class="mb-3">
-                    <label for="instagram_image" class="form-label fw-semibold">Instagram Image</label>
-                    <input type="file" name="instagram_image" id="instagram_image" class="form-control bg-dark text-white">
-                    @if($social->instagram_image)
-                        <div class="mt-2">
-                            <img src="{{ asset('storage/'.$social->instagram_image) }}" alt="Instagram Logo" class="img-thumbnail" width="120">
-                        </div>
-                    @endif
-                </div>
+                        @if($social->{$platform.'_image'})
+                            <div class="mt-2">
+                                <img src="{{ asset('storage/'.$social->{$platform.'_image'}) }}" 
+                                     alt="{{ ucfirst($platform) }} Logo" class="img-thumbnail" width="120">
+                            </div>
+                        @endif
+                    </div>
+                @endforeach
 
                 <!-- Active -->
                 <div class="form-check mb-3">
@@ -104,6 +64,7 @@
                     <label class="form-check-label fw-semibold" for="is_active">Active</label>
                 </div>
 
+                <!-- Actions -->
                 <div class="d-flex justify-content-end gap-2">
                     <a href="{{ route('socialmedia.index') }}" class="btn btn-danger px-4">Cancel</a>
                     <button type="submit" class="btn btn-primary px-4">Update</button>

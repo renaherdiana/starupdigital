@@ -43,6 +43,20 @@
                     @enderror
                 </div>
 
+                <!-- Rating -->
+                <div class="mb-3">
+                    <label for="rating" class="form-label fw-semibold">Rating</label>
+                    <select name="rating" id="rating" class="form-select bg-dark text-white" required>
+                        <option value="">Pilih rating</option>
+                        @for($i=1; $i<=5; $i++)
+                            <option value="{{ $i }}" {{ old('rating') == $i ? 'selected' : '' }}>{{ $i }} {{ $i == 1 ? 'Star' : 'Stars' }}</option>
+                        @endfor
+                    </select>
+                    @error('rating')
+                        <small class="text-danger">{{ $message }}</small>
+                    @enderror
+                </div>
+
                 <!-- Checkbox Active -->
                 <div class="form-check mb-3">
                     <input type="checkbox" name="is_active" class="form-check-input" id="is_active" value="1" 
