@@ -42,7 +42,11 @@
                         <h5 class="fw-bold">{{ ucfirst($platform) }}</h5>
                         <div class="bg-dark rounded p-3 d-flex align-items-center gap-3">
                             @if($image)
-                                <img src="{{ $image }}" alt="{{ ucfirst($platform) }}" class="rounded" width="60">
+                                <img src="{{ $image }}" 
+                                     alt="{{ ucfirst($platform) }}" 
+                                     class="rounded-circle shadow-sm" 
+                                     width="60" height="60" 
+                                     style="object-fit: cover;">
                             @endif
                             <div class="d-flex flex-column">
                                 <span class="fw-semibold text-white">{{ ucfirst($platform) }}</span>
