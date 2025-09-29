@@ -20,7 +20,7 @@
                 <table class="table table-dark table-hover align-middle mb-0">
                     <thead>
                         <tr>
-                            <th style="width: 5%;" class="text-center">ID</th>
+                            <th style="width: 5%;" class="text-center">No</th>
                             <th style="width: 25%;">Title</th>
                             <th style="width: 50%;">Description</th>
                             <th style="width: 20%;" class="text-center">Actions</th>

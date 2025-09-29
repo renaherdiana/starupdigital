@@ -22,7 +22,7 @@
                 <table class="table table-dark table-hover align-middle mb-0">
                     <thead>
                         <tr>
-                            <th style="width: 5%;">ID</th>
+                            <th style="width: 5%;">No</th>
                             <th style="width: 20%;">Title</th>
                             <th>Description</th>
                             <th style="width: 25%;" class="text-center">Actions</th>
@@ -31,25 +31,26 @@
                     <tbody>
                         @foreach($contacts as $contact)
                         <tr>
-                            <td class="text-center">{{ $contact->id }}</td>
+                            <td class="text-center">{{ $loop->iteration }}</td>
                             <td class="fw-semibold">{{ $contact->title }}</td>
                             <td class="text-muted">{{ $contact->description }}</td>
-                            <td>
+                            <td class="text-center">
                                 <div class="d-flex flex-column align-items-center">
                                     <!-- Tombol Aksi -->
                                     <div class="d-flex gap-2 mb-2">
                                         <a href="{{ route('contact.edit', $contact->id) }}" class="btn btn-primary btn-sm">Edit</a>
-                                        <form action="{{ route('contact.destroy', $contact->id) }}" method="POST" style="display:inline;">
+                                        <a href="{{ route('contact.show', $contact->id) }}" class="btn btn-info btn-sm">Detail</a>
+                                        <form action="{{ route('contact.destroy', $contact->id) }}" method="POST" onsubmit="return confirm('Yakin mau hapus?')" style="display:inline;">
                                             @csrf
                                             @method('DELETE')
                                             <button class="btn btn-danger btn-sm">Delete</button>
                                         </form>
-                                        <a href="{{ route('contact.show', $contact->id) }}" class="btn btn-info btn-sm">Detail</a>
                                     </div>
                                 </div>
                             </td>
                         </tr>
                         @endforeach
+
                         @if($contacts->isEmpty())
                         <tr>
                             <td colspan="4" class="text-center text-muted">Belum ada data contact.</td>

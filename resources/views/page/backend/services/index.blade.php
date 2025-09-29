@@ -23,7 +23,7 @@
                 <table class="table table-dark table-hover align-middle mb-0">
                     <thead class="text-center">
                         <tr>
-                            <th style="width:5%;">ID</th>
+                            <th style="width:5%;">No</th>
                             <th style="width:15%;">Photo</th>
                             <th style="width:20%;">Service Name</th>
                             <th>Description</th>
@@ -37,17 +37,17 @@
 
                             <!-- Photo -->
                             <td>
-                                <div class="rounded-circle bg-dark d-flex align-items-center justify-content-center mx-auto" 
+                                <div class="rounded-circle bg-dark d-flex align-items-center justify-content-center mx-auto"
                                     style="width:60px;height:60px; overflow:hidden;">
                                     @if($service->photo)
-                                        <img src="{{ asset('storage/'.$service->photo) }}" 
-                                            alt="{{ $service->title }}" 
-                                            class="w-100 h-100" 
+                                        <img src="{{ asset('storage/'.$service->photo) }}"
+                                            alt="{{ $service->title }}"
+                                            class="w-100 h-100"
                                             style="object-fit:cover;">
                                     @else
-                                        <img src="{{ asset('assetsbackend/img/index.jpg') }}" 
-                                            alt="Default" 
-                                            class="w-100 h-100" 
+                                        <img src="{{ asset('assetsbackend/img/index.jpg') }}"
+                                            alt="Default"
+                                            class="w-100 h-100"
                                             style="object-fit:cover;">
                                     @endif
                                 </div>

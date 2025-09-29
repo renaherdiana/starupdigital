@@ -16,9 +16,9 @@ class HomeFrontendController extends Controller
 {
     public function index()
     {
-        $hero         = Hero::active()->first();
+        $hero = Hero::active()->oldest()->first();
         $social       = SocialMedia::where('is_active', 1)->first();
-        $about        = About::where('is_active', 1)->latest()->first();
+        $about = About::where('is_active', 1)->oldest()->first();
         $services     = Service::where('is_active', 1)->get();
         $galeris      = Galeri::where('active', 1)->get();
         $testimonials = Testimonial::where('is_active', 1)->get();

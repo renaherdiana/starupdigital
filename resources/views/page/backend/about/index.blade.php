@@ -18,13 +18,12 @@
                 </a>
             </div>
 
-
             <!-- Table About -->
             <div class="table-responsive">
                 <table class="table table-dark table-hover align-middle mb-0">
                     <thead class="text-center">
                         <tr>
-                            <th style="width: 5%;">ID</th>
+                            <th style="width: 5%;">No</th>
                             <th style="width: 15%;">Photo</th>
                             <th style="width: 20%;">Title</th>
                             <th>Description</th>
@@ -34,20 +33,20 @@
                     <tbody>
                         @foreach($abouts as $about)
                         <tr>
-                            <td class="text-center">{{ $about->id }}</td>
+                            <td class="text-center">{{ $loop->iteration }}</td>
                             <td>
-                                <div class="rounded-circle bg-dark d-flex align-items-center justify-content-center mx-auto" 
-                                    style="width:60px;height:60px; overflow:hidden;">
+                                <div class="rounded-circle bg-dark d-flex align-items-center justify-content-center mx-auto"
+                                     style="width:60px;height:60px; overflow:hidden;">
                                     @if($about->photo)
-                                        <img src="{{ asset('storage/'.$about->photo) }}" 
-                                            alt="User" 
-                                            class="w-100 h-100" 
-                                            style="object-fit:cover;">
+                                        <img src="{{ asset('storage/'.$about->photo) }}"
+                                             alt="User"
+                                             class="w-100 h-100"
+                                             style="object-fit:cover;">
                                     @else
-                                        <img src="{{ asset('assetsbackend/img/index.jpg') }}" 
-                                            alt="Default" 
-                                            class="w-100 h-100" 
-                                            style="object-fit:cover;">
+                                        <img src="{{ asset('assetsbackend/img/index.jpg') }}"
+                                             alt="Default"
+                                             class="w-100 h-100"
+                                             style="object-fit:cover;">
                                     @endif
                                 </div>
                             </td>

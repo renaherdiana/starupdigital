@@ -22,7 +22,7 @@
                 <table class="table table-dark table-hover align-middle mb-0">
                     <thead class="text-center">
                         <tr>
-                            <th style="width:5%;">ID</th>
+                            <th style="width:5%;">No</th>
                             <th style="width:15%;">Photo</th>
                             <th style="width:20%;">Nama</th>
                             <th>Testimoni</th>
@@ -36,14 +36,14 @@
                             <td class="text-center">{{ $testimonial->id }}</td>
                             <td class="text-center">
                                 @if($testimonial->photo)
-                                    <img src="{{ asset('storage/' . $testimonial->photo) }}" 
+                                    <img src="{{ asset('storage/' . $testimonial->photo) }}"
                                          class="rounded-circle border border-2 border-dark"
-                                         style="width:60px;height:60px;object-fit:cover;" 
+                                         style="width:60px;height:60px;object-fit:cover;"
                                          alt="{{ $testimonial->name }}">
                                 @else
-                                    <img src="{{ asset('assetsbackend/img/default-user.jpg') }}" 
+                                    <img src="{{ asset('assetsbackend/img/default-user.jpg') }}"
                                          class="rounded-circle border border-2 border-dark"
-                                         style="width:60px;height:60px;object-fit:cover;" 
+                                         style="width:60px;height:60px;object-fit:cover;"
                                          alt="Default">
                                 @endif
                             </td>
@@ -52,7 +52,7 @@
 
                             <!-- Rating (angka + tooltip bintang) -->
                             <td class="text-center">
-                                <span data-bs-toggle="tooltip" data-bs-html="true" 
+                                <span data-bs-toggle="tooltip" data-bs-html="true"
                                       title="@for($i = 1; $i <= $testimonial->rating; $i++)★@endfor">
                                     {{ $testimonial->rating }}/5
                                 </span>

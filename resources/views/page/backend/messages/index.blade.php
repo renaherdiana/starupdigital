@@ -20,7 +20,7 @@
                 <table class="table table-dark table-hover align-middle mb-0">
                     <thead class="text-center">
                         <tr>
-                            <th style="width:5%;">ID</th>
+                            <th style="width:5%;">No</th>
                             <th style="width:20%;">Nama</th>
                             <th style="width:20%;">Email</th>
                             <th>Subject</th>

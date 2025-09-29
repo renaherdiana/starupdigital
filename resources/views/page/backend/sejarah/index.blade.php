@@ -22,7 +22,7 @@
                 <table class="table table-dark table-hover align-middle mb-0">
                     <thead class="text-center">
                         <tr>
-                            <th style="width:5%;">ID</th>
+                            <th style="width:5%;">No</th>
                             <th style="width:15%;">Foto</th>
                             <th style="width:20%;">Judul</th>
                             <th>Deskripsi</th>
@@ -37,14 +37,14 @@
                             <!-- Foto -->
                             <td class="text-center">
                                 @if($sejarah->photo)
-                                    <img src="{{ asset('storage/' . $sejarah->photo) }}" 
-                                         class="rounded-circle border border-2 border-dark" 
-                                         style="width:60px;height:60px;object-fit:cover;" 
+                                    <img src="{{ asset('storage/' . $sejarah->photo) }}"
+                                         class="rounded-circle border border-2 border-dark"
+                                         style="width:60px;height:60px;object-fit:cover;"
                                          alt="{{ $sejarah->title }}">
                                 @else
-                                    <img src="{{ asset('assetsbackend/img/default-user.jpg') }}" 
-                                         class="rounded-circle border border-2 border-dark" 
-                                         style="width:60px;height:60px;object-fit:cover;" 
+                                    <img src="{{ asset('assetsbackend/img/default-user.jpg') }}"
+                                         class="rounded-circle border border-2 border-dark"
+                                         style="width:60px;height:60px;object-fit:cover;"
                                          alt="Default">
                                 @endif
                             </td>
