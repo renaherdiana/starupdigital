@@ -22,7 +22,7 @@
                 <table class="table table-dark table-hover align-middle mb-0 text-center">
                     <thead>
                         <tr>
-                            <th style="width:5%;">ID</th>
+                            <th style="width:5%;">No</th>
                             <th style="width:15%;">Photo</th>
                             <th style="width:20%;">Nama</th>
                             <th style="width:25%;">Profesi</th>
@@ -35,12 +35,12 @@
                             <td>{{ $tk->id }}</td>
                             <td>
                                 @if($tk->photo)
-                                    <img src="{{ asset('storage/' . $tk->photo) }}" 
+                                    <img src="{{ asset('storage/' . $tk->photo) }}"
                                          class="rounded-circle mx-auto border border-2 border-dark"
                                          style="width:60px;height:60px;object-fit:cover;"
                                          alt="{{ $tk->name }}">
                                 @else
-                                    <img src="{{ asset('assetsbackend/img/default-user.jpg') }}" 
+                                    <img src="{{ asset('assetsbackend/img/default-user.jpg') }}"
                                          class="rounded-circle mx-auto border border-2 border-dark"
                                          style="width:60px;height:60px;object-fit:cover;"
                                          alt="Default">

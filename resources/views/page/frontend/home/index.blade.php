@@ -18,14 +18,14 @@
                 <div class="col-lg-6 wow fadeIn order-2 order-lg-1 px-4 px-lg-5 text-center text-lg-start" data-wow-delay="0.5s">
                     @if($hero)
                         @if($hero->title)
-                            <h2 class="font-dancing-script mb-3" 
+                            <h2 class="font-dancing-script mb-3"
                                 style="line-height: 1.2; font-size: 2.5rem; color: #00098d;">
                                 {!! nl2br(e($hero->title)) !!}
                             </h2>
                         @endif
 
                         @if($hero->subtitle)
-                            <h1 class="mb-3" 
+                            <h1 class="mb-3"
                                 style="line-height: 1.3; font-size: 3.5rem; color: #00098d;">
                                 {!! nl2br(e($hero->subtitle)) !!}
                             </h1>
@@ -55,9 +55,9 @@
                         $heroImage = $hero && $hero->image ? asset('storage/' . $hero->image) : asset('assetsbackend/img/default-hero.jpg');
                         $heroAlt = $hero && $hero->title ? $hero->title : 'Default Hero';
                     @endphp
-                    <img class="img-fluid mb-3 rounded shadow" 
-                        src="{{ $heroImage }}" 
-                        alt="{{ $heroAlt }}" 
+                    <img class="img-fluid mb-3 rounded shadow"
+                        src="{{ $heroImage }}"
+                        alt="{{ $heroAlt }}"
                         style="max-height: 400px; object-fit: cover; filter: brightness(70%);">
                 </div>
 
@@ -66,7 +66,7 @@
     </div>
     <!-- Home End -->
 
-    
+
     <!-- About Start -->
     <div class="container-fluid py-5">
         <div class="container">
@@ -75,11 +75,11 @@
                 @if($about?->photo || $about?->phone)
                 <div class="col-lg-6 wow fadeIn" data-wow-delay="0.2s">
                     @if($about?->photo)
-                    <img class="img-fluid mb-3" 
-                        src="{{ asset('storage/' . $about->photo) }}" 
+                    <img class="img-fluid mb-3"
+                        src="{{ asset('storage/' . $about->photo) }}"
                         alt="{{ $about->title }}">
                     @endif
-                    
+
                     @if($about?->phone)
                     <div class="d-flex align-items-center bg-light p-3 rounded">
                         <div class="btn-square flex-shrink-0 bg-primary d-flex align-items-center justify-content-center" style="width: 100px; height: 100px;">
@@ -103,7 +103,7 @@
                         @if($about->description)
                             <p class="mb-4">{{ $about->description }}</p>
                         @endif
-                        
+
                         <div class="row g-3 mb-5">
                             @if($about->experience)
                             <div class="col-sm-6">
@@ -195,19 +195,19 @@
     </div>
     <!-- Gallery End -->
 
-    <!-- Testimonials Start -->
-    <div class="container py-5">
-        <div class="text-center wow fadeIn" data-wow-delay="0.2s">
-            <h1 class="font-dancing-script text-primary">Testimonial</h1>
-            <h1 class="mb-5">What Clients Say!</h1>
-        </div>
+<!-- Testimonials Start -->
+<div class="container py-5">
+    <div class="text-center wow fadeIn" data-wow-delay="0.2s">
+        <h1 class="font-dancing-script text-primary">Testimonial</h1>
+        <h1 class="mb-5">What Clients Say!</h1>
+    </div>
 
-        <!-- Carousel -->
-        <div class="owl-carousel testimonial-carousel">
+    <!-- Carousel -->
+    <div class="owl-carousel testimonial-carousel">
         @foreach($testimonials as $testimonial)
         <div class="text-center bg-light p-4 rounded shadow-sm">
-            <img class="img-fluid rounded-circle mx-auto d-block mb-3" 
-                src="{{ $testimonial->photo ? asset('storage/' . $testimonial->photo) : asset('img/default-user.jpg') }}" 
+            <img class="img-fluid rounded-circle mx-auto d-block mb-3"
+                src="{{ $testimonial->photo ? asset('storage/' . $testimonial->photo) : asset('img/default-user.jpg') }}"
                 alt="{{ $testimonial->name }}" style="width:80px;height:80px;">
 
             <h5>{{ $testimonial->name }}</h5>
@@ -226,12 +226,16 @@
             <p>{{ $testimonial->testimonial }}</p>
         </div>
         @endforeach
-    </div>  
+    </div>
 
     <!-- Custom Nav Buttons -->
     <div class="text-center mt-3">
-        <button id="prevTestimonial" class="btn btn-primary mx-2"><i class="bi bi-chevron-left"></i></button>
-        <button id="nextTestimonial" class="btn btn-primary mx-2"><i class="bi bi-chevron-right"></i></button>
+        <button id="prevTestimonial" class="testimonial-btn mx-2">
+            <i class="bi bi-chevron-left"></i>
+        </button>
+        <button id="nextTestimonial" class="testimonial-btn mx-2">
+            <i class="bi bi-chevron-right"></i>
+        </button>
     </div>
 </div>
 
@@ -239,6 +243,23 @@
 <!-- Owl Carousel CSS -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"/>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"/>
+
+<!-- Custom CSS -->
+<style>
+/* Tombol custom nav */
+.testimonial-btn {
+    background: none;       /* hilangkan background kotak */
+    border: none;           /* hilangkan border */
+    color: #0d6efd;         /* warna biru (Bootstrap primary) */
+    font-size: 1.8rem;      /* ukuran ikon */
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.testimonial-btn:hover {
+    color: #0a58ca; /* warna lebih gelap saat hover */
+}
+</style>
 
 <!-- jQuery + Owl Carousel JS -->
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
@@ -251,7 +272,7 @@ $(document).ready(function(){
     testimonialCarousel.owlCarousel({
         loop: true,
         margin: 20,
-        nav: false, // matikan nav default
+        nav: false, // nav default off
         dots: true,
         autoplay: true,
         autoplayTimeout: 4000,
@@ -272,7 +293,8 @@ $(document).ready(function(){
     });
 });
 </script>
-    <!-- Testimonials End -->
+<!-- Testimonials End -->
+
 
 
     <!-- Partners Start -->

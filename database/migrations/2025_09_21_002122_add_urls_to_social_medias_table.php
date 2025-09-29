@@ -12,10 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('social_medias', function (Blueprint $table) {
-            $table->string('twitter_url')->nullable()->after('twitter_username');
-            $table->string('facebook_url')->nullable()->after('facebook_username');
-            $table->string('linkedin_url')->nullable()->after('linkedin_username');
-            $table->string('instagram_url')->nullable()->after('instagram_username');
+            $table->string('twitter_url')->nullable();
+            $table->string('facebook_url')->nullable();
+            $table->string('linkedin_url')->nullable();
+            $table->string('instagram_url')->nullable();
         });
     }
 
